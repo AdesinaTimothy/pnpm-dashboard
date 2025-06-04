@@ -28,7 +28,7 @@ export default function RootLayout({
       >
         <div className="flex h-screen">
             <AppSideBar />
-          <main className="flex-1 overflow-auto py-10 px-8">
+          <main className="flex-1 overflow-auto py-10 px-8 bg-[#f8f4f0]">
               {children}
           </main>
         </div>
