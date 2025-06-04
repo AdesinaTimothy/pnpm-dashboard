@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Public_Sans } from "next/font/google";
 import "./globals.css";
+import AppSideBar from "@/Components/AppSideBar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+
+const publicSans = Public_Sans({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-public-sans',
+  subsets: ["latin"]
 });
 
 export const metadata: Metadata = {
@@ -25,9 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${publicSans.variable} antialiased`}
       >
-        {children}
+        <div className="flex h-screen">
+            <AppSideBar />
+          <main className="flex-1 overflow-auto py-10 px-8">
+              {children}
+          </main>
+        </div>
       </body>
     </html>
   );
