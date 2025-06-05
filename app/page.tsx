@@ -1,3 +1,6 @@
+"use client"
+
+import AppPieCharts from "@/Components/AppPieCharts";
 import Cards from "@/Components/Cards";
 import RecurringBillsComp from "@/Components/RecurringBillsComp";
 import Savings from "@/Components/Savings";
@@ -7,9 +10,9 @@ import TransactionList from "@/Components/TransactionList";
 
 export default function Home() {
   return (
-    <div className="w-full flex flex-col gap-8">
+    <div className="w-full flex flex-col gap-6">
       {/* TOP SECTION OF OVERVIEW */}
-    <div className="w-full flex flex-col gap-8">
+    <div className="w-full flex flex-col gap-4">
       <h1 className="text-[32px] font-bold text-gray-900 ">Overview</h1>
       <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-x-6 ">
         <Cards bgColor="bg-gray-900" hColor="text-white" pColor="text-white" amount={4836.04} amountTitle="Current Balance"/>
@@ -25,7 +28,7 @@ export default function Home() {
         <div className="flex flex-col gap-6">
 
           {/* POTS SECTION OF THE OVERVIEW */}
-          <div className="w-full flex flex-col bg-white p-8 rounded-xl">
+          <div className="w-full flex flex-col bg-white p-8 rounded-xl gap-5">
             <div>
               <SmallContentTitle headingTitle="Pots" buttonName="See Details"  navigateTo='/pots'/>
             </div>
@@ -70,13 +73,25 @@ export default function Home() {
         </div>
 
         {/* RIGHT SECTION OF THE OVERVIEW */}
-        <div>
+        <div className="flex flex-col gap-6">
 
           {/* BUDGETS SECTION OF THE OVERVIEW PAGE */}
-          <div></div>
+            <div className="w-full flex flex-col bg-white p-8 rounded-xl gap-8">
+              <SmallContentTitle headingTitle="Budgets" buttonName="See Details" navigateTo='/budgets'/>
+
+              <div className="w-full flex">
+                <div>
+                 <AppPieCharts />
+                </div>
+                <div></div>
+              </div>
+            </div>
+
+
+
 
           {/* RECURRING BILLS SECTION OF THE OVERVIEW PAGE */}
-          <div className="w-full h-auto p-8 bg-white rounded-xl space-y-8">
+          <div className="w-full p-8 bg-white rounded-xl space-y-8">
                 <div className='w-full h-auto'>
                   <SmallContentTitle headingTitle="Recurring Bills" buttonName="See Details" navigateTo='/recurringbills'/>
                 </div>
