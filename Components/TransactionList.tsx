@@ -26,14 +26,13 @@ const TransactionList:React.FC<UserTransactionsDetails> = ({
         {/* Left Side */}
       <div className= "flex items-center justify-start h-auto gap-x-4">
 
-        <div>
+        <div className="relative w-[32px] h-[32px] md:w-[40px] md:h-[40px] rounded-full overflow-hidden">
             <Image
             // className="w-10 h-10 rounded-full object-cover"
             src={UserImage.src} 
             alt={UserImage.alt} 
-            width={40}
-            height={40}
-            className="block mx-auto rounded-full"
+            fill
+            className="object-cover"
             />    
         </div>
         <div className="text-sm font-bold text-gray-900 ">

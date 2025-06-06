@@ -1,7 +1,9 @@
+
 import type { Metadata } from "next";
 import { Public_Sans } from "next/font/google";
 import "./globals.css";
 import AppSideBar from "@/Components/AppSideBar";
+import AppMobileSideBar from "@/Components/AppMobileSideBar";
 
 
 
@@ -27,10 +29,16 @@ export default function RootLayout({
         className={`${publicSans.variable} antialiased`}
       >
         <div className="flex h-screen">
+          <div className="block lg:hidden">
             <AppSideBar />
-          <main className="flex-1 overflow-auto py-10 px-8 bg-[#f8f4f0]">
+          </div>
+          <main className="flex-1 overflow-auto px-4 lg:px-8 bg-[#f8f4f0]">
               {children}
           </main>
+        </div>
+
+        <div className="block md:hidden">
+          <AppMobileSideBar />
         </div>
       </body>
     </html>

@@ -48,7 +48,7 @@ const AppSideBar = () => {
     const pathname = usePathname();
   return (
     <aside className={clsx(
-        "flex flex-col justify-start h-full bg-gray-900 rounded-r-2xl transition-[width] duration-300 ease-in-out",
+        "hidden lg:flex flex-col justify-start h-full bg-gray-900 rounded-r-2xl transition-[width] duration-300 ease-in-out",
             isCollapsed ? "w-[90px] pr-3": "w-[300px] pr-6",
         )}>
         {/* LOGO AREA */}

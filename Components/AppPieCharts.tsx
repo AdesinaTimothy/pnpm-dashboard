@@ -49,7 +49,7 @@ const AppPieCharts = () => {
               data={chartData}
               dataKey="visitors"
               nameKey="browser"
-              innerRadius={60}
+              innerRadius={65}
               strokeWidth={5}
             >
               <Label

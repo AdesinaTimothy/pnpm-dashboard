@@ -1,10 +1,11 @@
 "use client"
 
+import AppMobileSideBar from "@/Components/AppMobileSideBar";
 import AppPieCharts from "@/Components/AppPieCharts";
 import Cards from "@/Components/Cards";
 import RecurringBillsComp from "@/Components/RecurringBillsComp";
-import Savings from "@/Components/Savings";
 import SmallContentTitle from "@/Components/SmallContentTitle";
+import Spent from "@/Components/Spent";
 import TotalSaved from "@/Components/TotalSaved";
 import TransactionList from "@/Components/TransactionList";
 
@@ -12,9 +13,9 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col gap-6">
       {/* TOP SECTION OF OVERVIEW */}
-    <div className="w-full flex flex-col gap-4">
+    <div className="w-full flex flex-col gap-3">
       <h1 className="text-[32px] font-bold text-gray-900 ">Overview</h1>
-      <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between gap-x-6 ">
+      <div className="w-full flex flex-col gap-y-4 md:flex-row md:items-center md:justify-between gap-x-6 ">
         <Cards bgColor="bg-gray-900" hColor="text-white" pColor="text-white" amount={4836.04} amountTitle="Current Balance"/>
         <Cards bgColor="bg-white" hColor="text-gray-900" pColor="text-gray-500" amount={3814.25} amountTitle="Income"/>
         <Cards bgColor="bg-white" hColor="text-gray-900" pColor="text-gray-500" amount={1700.50} amountTitle="Expenses"/>
@@ -32,20 +33,20 @@ export default function Home() {
             <div>
               <SmallContentTitle headingTitle="Pots" buttonName="See Details"  navigateTo='/pots'/>
             </div>
-            <div className="w-full flex items-center justify-start gap-x-10">
-                  <div className="w-[247px] h-auto">
-                    <TotalSaved  savedAmount={950}/>
+            <div className="w-full flex flex-col items-start md:flex-row md:items-center md:justify-between gap-x-8">
+                  <div className="min-w-[247px]">
+                    <TotalSaved  savedAmount={850}/>
                   </div>
 
-                  <div className="w-full h-auto flex items-center justify-start">
-                    <div className="w-full h-full flex flex-col gap-y-2">
-                      <Savings savingsAmount={159} savingsType="Savings" borderColor="#277C78"/>
-                      <Savings savingsAmount={110} savingsType="Concert Ticket" borderColor="#626070"/>
+                  <div className="w-full flex items-center justify-start gap-x-4">
+                    <div className="flex flex-col gap-y-2">
+                      <Spent spentAmount={159} spentTitle="Savings" borderColor="#277C78"/>
+                      <Spent spentAmount={110} spentTitle="Concert Ticket" borderColor="#626070"/>
                     </div>
 
-                    <div className="w-full h-auto flex flex-col gap-y-2">
-                      <Savings savingsAmount={40} savingsType="Gift" borderColor="#82C9D7"/>
-                      <Savings savingsAmount={10} savingsType="New Laptop" borderColor="#F2CDAC"/>
+                    <div className="flex flex-col gap-y-2">
+                      <Spent spentAmount={40} spentTitle="Gift" borderColor="#82C9D7"/>
+                      <Spent spentAmount={10} spentTitle="New Laptop" borderColor="#F2CDAC"/>
                     </div>
                   </div>
                 </div>
@@ -57,7 +58,7 @@ export default function Home() {
               <SmallContentTitle headingTitle="Transactions" buttonName="View All" navigateTo='/transactions'/>
             </div>
 
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-y-4">
                 <TransactionList UserBalance="+$75.50" UserDate="19 Aug 2024" UserName="Emma Richardson" UserImage={{ src: "/images/person1.jpg", alt: "User Profile Image"}} />
                 <hr className="border-gray-100"/>
                 <TransactionList UserBalance="+$55.50" UserDate="19 Aug 2024" UserName="Savory Bites Bistro" UserImage={{ src: "/images/logo8.jpg", alt: "User Profile Image"}} />
@@ -79,11 +80,16 @@ export default function Home() {
             <div className="w-full flex flex-col bg-white p-8 rounded-xl gap-8">
               <SmallContentTitle headingTitle="Budgets" buttonName="See Details" navigateTo='/budgets'/>
 
-              <div className="w-full flex">
-                <div>
+              <div className="w-full flex justify-between">
+                <div className="w-[60%] h-[250px]">
                  <AppPieCharts />
                 </div>
-                <div></div>
+                <div className="flex flex-col gap-3">
+                    <Spent spentAmount={50.01} spentTitle="Entertainment" borderColor="#277C78"/>
+                    <Spent spentAmount={750.01} spentTitle="Bills" borderColor="#82C9D7"/>
+                    <Spent spentAmount={75.01} spentTitle="Dinning Out" borderColor="#F2CDAC"/>
+                    <Spent spentAmount={100.01} spentTitle="Personal Care" borderColor="#626070"/>
+                </div>
               </div>
             </div>
 
@@ -101,13 +107,14 @@ export default function Home() {
                 <RecurringBillsComp bills="Total Upcoming" amountBills={194.98} borderColor="#F2CDAC" />
                 <RecurringBillsComp bills="Due Soon" amountBills={59.98} borderColor="#82C9D7"/>
                 </div>
-              </div>
+
+                
+          </div>
         </div>
     </div>
-
-
-
-
     </div>
+
+   
+   
   );
 }
