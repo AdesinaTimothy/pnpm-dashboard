@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${publicSans.variable} antialiased`}
       >
         <div className="flex h-screen">
-          <div className="block lg:hidden">
+          <div className="hidden lg:block">
             <AppSideBar />
           </div>
           <main className="flex-1 overflow-auto px-4 lg:px-8 bg-[#f8f4f0]">

@@ -33,7 +33,7 @@ export default function Home() {
             <div>
               <SmallContentTitle headingTitle="Pots" buttonName="See Details"  navigateTo='/pots'/>
             </div>
-            <div className="w-full flex flex-col items-start md:flex-row md:items-center md:justify-between gap-x-8">
+            <div className="w-full flex flex-col gap-y-8 items-start md:flex-row md:items-center md:justify-between md:gap-x-8">
                   <div className="min-w-[247px]">
                     <TotalSaved  savedAmount={850}/>
                   </div>
