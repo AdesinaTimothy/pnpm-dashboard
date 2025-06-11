@@ -18,7 +18,7 @@ const MobileNavItem = ({
    }: NavItemProp) => {
   return (
     <div className={clsx(
-        "w-full flex flex-col items-center justify-center gap-3 px-5 pt-2 pb-3 transition-all cursor-pointer group rounded-t-xl",
+        "w-full flex flex-col items-center justify-center gap-3 px-3 pt-4 pb-3 transition-all cursor-pointer group rounded-t-xl sticky",
         {
             "bg-[#F8F4F0] border-b-4 border-b-[#277c78]": isActive,
         }
@@ -38,7 +38,7 @@ const MobileNavItem = ({
 
        
         <span className= {clsx(
-            "text-gray-300 text-xs font-bold transition-all duration-200",
+            "hidden sm:inline text-gray-300 text-xs font-bold transition-all duration-200",
             {
                 "group-hover:text-gray-50": !isActive,
                 "text-gray-900": isActive,

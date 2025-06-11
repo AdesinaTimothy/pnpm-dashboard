@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavItem from './NavItem'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -46,10 +46,28 @@ const AppSideBar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const pathname = usePathname();
+
+    useEffect(() => {
+      const mediaQuery = window.matchMedia("(max-width: 1024px)");
+    
+      const handleResize = (e: MediaQueryListEvent) => {
+        setIsCollapsed(e.matches); 
+      };
+    
+      // Initial check
+      setIsCollapsed(mediaQuery.matches);
+    
+      // Listen for screen size changes
+      mediaQuery.addEventListener("change", handleResize);
+    
+      return () => mediaQuery.removeEventListener("change", handleResize);
+    }, []);
+    
+
   return (
     <aside className={clsx(
-        "hidden lg:flex flex-col justify-start h-full bg-gray-900 rounded-r-2xl transition-[width] duration-300 ease-in-out",
-            isCollapsed ? "w-[90px] pr-3": "w-[300px] pr-6",
+        "hidden md:flex flex-col justify-start h-full bg-gray-900 rounded-r-2xl transition-[width] duration-300 ease-in-out",
+            isCollapsed ? "w-[80px] pr-3": "w-[220px] pr-6",
         )}>
         {/* LOGO AREA */}
         <div className="w-full py-10 pl-8 cursor-pointer">

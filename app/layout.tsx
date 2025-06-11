@@ -29,17 +29,23 @@ export default function RootLayout({
         className={`${publicSans.variable} antialiased`}
       >
         <div className="flex h-screen">
-          <div className="hidden lg:block">
+          <div className="hidden md:block">
             <AppSideBar />
           </div>
-          <main className="flex-1 overflow-auto px-4 lg:px-8 bg-[#f8f4f0]">
-              {children}
-          </main>
+          <main className="flex-1 overflow-auto pb-20 bg-[#f8f4f0]">
+          <div className="px-4 lg:px-8">
+            {children}
+          </div>
+
+          <div className="block  md:hidden mt-3 px-4 lg:px-8">
+            <AppMobileSideBar />
+          </div>
+        </main>
+
         </div>
 
-        <div className="block md:hidden">
-          <AppMobileSideBar />
-        </div>
+
+        
       </body>
     </html>
   );

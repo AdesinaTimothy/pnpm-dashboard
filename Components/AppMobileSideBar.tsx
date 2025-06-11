@@ -45,7 +45,7 @@ const AppMobileSideBar = () => {
     const pathname = usePathname();
 
   return (
-    <nav className="w-full flex items-center justify-between bg-gray-900 pt-2 pl-10 pr-10 rounded-t-xl">
+    <nav className="fixed bottom-0 left-0 w-full z-50 flex items-center justify-between bg-gray-900 pt-2 px-10 rounded-t-xl md:hidden">
       {items.map((item) => (
         <Link key={item.url} href={item.url}>
             <MobileNavItem 

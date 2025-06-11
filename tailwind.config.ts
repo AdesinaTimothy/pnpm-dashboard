@@ -1,18 +1,26 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"], // Adjust based on your folders
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./Components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}"
+  ],
   theme: {
-    extend: {},
-    screens: {
-      sm: "40rem",   // 640px
-      md: "48rem",   // 768px
-      lg: "64rem",   // 1024px
-      xl: "80rem",   // 1280px
-      "2xl": "96rem" // 1536px
-    },
+    extend: {
+      colors: {
+        testblue: "#0000ff"
+      },
+      screens: {
+        sm: "40rem",   // 640px
+        md: "48rem",   // 768px
+        lg: "64rem",   // 1024px
+        xl: "80rem",   // 1280px
+        "2xl": "96rem" // 1536px
+      }
+    }
   },
   plugins: [],
-}
+};
 
-export default config
+export default config;

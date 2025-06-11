@@ -28,7 +28,7 @@ const SmallContentTitle: React.FC<SmallContentTitleProp> = ({
   return (
     <div className="w-full flex h-auto items-align justify-between">
         <div>
-            <h3 className='text-2xl text-gray-900 font-bold'>
+            <h3 className='text-xl text-gray-900 font-bold'>
                {headingTitle}
             </h3>
         </div>

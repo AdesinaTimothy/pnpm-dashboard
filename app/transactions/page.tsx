@@ -1,9 +1,10 @@
+import PotHeading from '@/Components/PotHeading'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>
-      This is the transactions page
+    <div className="w-full  my-8">
+      <PotHeading />
     </div>
   )
 }
