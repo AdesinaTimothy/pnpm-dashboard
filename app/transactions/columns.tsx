@@ -1,5 +1,6 @@
 "use client"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar";
 import { ColumnDef } from "@tanstack/react-table"
 import clsx from "clsx";
 
@@ -13,10 +14,25 @@ export type TransactionProp = {
 
 export const columns: ColumnDef<TransactionProp>[] = [
     {
-      accessorKey: "status",
+      accessorKey: "name",
       header: () => <div className="text-left py-3">
         <p className="font-normal text-xs text-gray-600">Recipient /Sender</p>
         </div>,
+        cell: ({row}) => {
+          const { name, image } = row.original
+          return (
+            <div className="flex items-center justify-start gap-x-3">
+             <Avatar>
+              <AvatarImage src={image} alt={name} width={24} height={24}/>
+              <AvatarFallback>{name.at(0)}</AvatarFallback>
+            </Avatar>
+
+            <span className="font-medium">
+                {name}
+            </span>
+            </div>
+          )
+        }
     },
 
     {

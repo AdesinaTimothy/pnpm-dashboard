@@ -80,6 +80,8 @@ const Page =  () => {
   const [data, setData] = useState<TransactionProp[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("All Transactions")
   const [selectedSort, setSelectedSort] = useState<string>("latest")
+  // const [searchData, setSearchData] = useState<[]>([]);
+  const [searchInputData, setSearchInputData] = useState<string>("")
 
 
 
@@ -89,11 +91,26 @@ const Page =  () => {
     });
   }, []);
 
+  const handdleSearchInputData = (e : React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInputData(e.target.value)
+  }
+
 
   const sortedData = useMemo(() => {
-    const filtered = selectedCategory === 'All Transactions' 
+
+    // This is the filtere function for filtering the transactions based on category
+    let filtered = selectedCategory === 'All Transactions' 
       ? data 
       : data.filter(item => item.category === selectedCategory);
+
+    
+      // This is the search function for filtering the transactions based on the search input
+      if (searchInputData.trim()) {
+        const trimmedSearchInput = searchInputData.trim().toLocaleLowerCase();
+        filtered = filtered.filter((tx) => tx.name.toLocaleLowerCase().includes(trimmedSearchInput))
+      }
+
+      // While this the sort fucntion for sorting the transactions based on the sort parameters
 
     switch (selectedSort) {
       case 'latest':
@@ -111,7 +128,7 @@ const Page =  () => {
       default:
         return filtered;
     }
-  }, [data, selectedCategory, selectedSort]);
+  }, [data, selectedCategory, selectedSort, searchInputData]);
 
   return (
     <div className="w-full mt-8 flex flex-col gap-8">
@@ -120,19 +137,21 @@ const Page =  () => {
       {/* Main content container */}
       <div className="bg-white px-8 rounded-2xl">
         {/* Search and filter controls */}
-        <div className="flex mt-8 items-center justify-between">
+        <div className="flex flex-col items-start gap-4 justify-between lg:flex-row lg:items-center lg:justify-between mt-8 ">
           {/* Search input */}
           <div className="relative max-w-xs">
             <input
               type="text"
               placeholder="Search..."
-              className="w-full pl-4 pr-10 py-2 border rounded-md focus:outline-none"
+              className=" pl-4 pr-10 py-1.5 border rounded-md focus:outline-none"
+              value={searchInputData}
+              onChange={(e) => handdleSearchInputData(e)}
             />
-            <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-900 pointer-events-none" />
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-900 pointer-cursor" />
           </div>
           
           {/* Filter controls */}
-          <div className="flex gap-5">
+          <div className="flex flex-col lg:flex-row gap-5">
             <Sortby 
             selectedSort={selectedSort}
             setSelectedSort={setSelectedSort}
