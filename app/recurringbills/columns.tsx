@@ -1,6 +1,11 @@
+"use client"
+
 import React from 'react'
 
-const columns = () => {
+
+
+
+const Columns = () => {
   return (
     <div>
       
@@ -8,4 +13,4 @@ const columns = () => {
   )
 }
 
-export default columns
+export default Columns

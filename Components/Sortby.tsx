@@ -2,17 +2,23 @@
 import React from 'react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 
-const Sortby = () => {
+
+type SortbyProps = {
+  selectedSort?: string;
+  setSelectedSort?: (value: string) => void;
+}
+
+const Sortby: React.FC<SortbyProps> = ({selectedSort, setSelectedSort}) => {
   return (
-    <div className="flex items-center gap-x-3 justify-start">
+    <div className="flex items-center gap-x-2 justify-start">
       <p className="text-sm text-gray-500">Sort by</p>
-      <Select>
+      <Select value={selectedSort} onValueChange={setSelectedSort}>
         <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Latest" />
         </SelectTrigger>
         <SelectContent>
-            <SelectItem value="Latest">Latest</SelectItem>
-            <SelectItem value="Oldest">Oldest</SelectItem>
+            <SelectItem value="latest">Latest</SelectItem>
+            <SelectItem value="oldest">Oldest</SelectItem>
             <SelectItem value="AtoZ">A to Z</SelectItem>
             <SelectItem value="ZtoA">Z to A</SelectItem>
             <SelectItem value="highest">Highest</SelectItem>
