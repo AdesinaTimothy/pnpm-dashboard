@@ -10,12 +10,14 @@ type SmallContentTitleProp = {
     buttonName?: string;
     // onClick?:  () => void;
     navigateTo?: string;
+    titlesize?: number;
 }
 
 const SmallContentTitle: React.FC<SmallContentTitleProp> = ({
     headingTitle = "Recurring Bills", 
     buttonName = "See Details",
     navigateTo, 
+    titlesize = 20,
 }) => {
     const router = useRouter();
 
@@ -28,7 +30,9 @@ const SmallContentTitle: React.FC<SmallContentTitleProp> = ({
   return (
     <div className="w-full flex h-auto items-align justify-between">
         <div>
-            <h3 className='text-xl text-gray-900 font-bold'>
+            <h3 className='text-[] text-gray-900 font-bold'
+            style={{fontSize: titlesize}}
+            >
                {headingTitle}
             </h3>
         </div>

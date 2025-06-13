@@ -80,7 +80,7 @@ export default function Home() {
               <SmallContentTitle headingTitle="Budgets" buttonName="See Details" navigateTo='/budgets'/>
 
               <div className="w-full flex justify-between">
-                <div className="w-[60%] h-[250px]">
+                <div className="w-full h-full">
                  <AppPieCharts />
                 </div>
                 <div className="flex flex-col gap-3">
